@@ -1,0 +1,375 @@
+/*
+PALETA DE COLORES:
+
+Amarillo: #EAC926;
+Azul: #03264C;
+Celeste: #1259c3;
+Gris oscuro: #666;
+Gris claro: #ebebeb;
+Verde: #39b54a;
+font-family: 'Roboto', sans-serif;
+*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #ebebeb;
+}
+
+header{
+    background-color: #EAC926;
+}
+
+p{
+    font-size: 12px;
+}
+
+/* HEADER */
+
+.top-header{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    padding: 5%;
+}
+
+.logo{
+    width: 50%;
+    padding: 10px;
+}
+
+.buscador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 5px;
+}
+
+header nav ul li a{
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+}
+
+header nav ul li{
+    list-style-type: none;
+}
+
+header nav{
+    display: none;
+}
+
+header p{
+    text-align: center;
+}
+
+header .buscador .input{
+    background-color: #FFF;
+    color: #666;
+    border: none;
+    outline: none;
+    width: 80%;
+    border-radius: 5px;
+}
+
+header .buscador form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #FFF;
+    padding: 5px;
+}
+
+header .buscador .lupa{
+    background-color: #FFF;
+    border: none;
+    color: #666;
+    border-radius: 5px;
+}
+
+header div.burger-menu i{
+    color: #FFF;
+    background-color: #1259c3;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px 0px 20px 0px;
+    border-radius: 5px;
+}
+
+header div.burger-menu{
+    text-align: center;
+}
+
+/* MAIN */
+
+main{
+    margin: 0 auto;
+    width: 90vw;
+}
+
+main section h3{
+    font-size: 24px;
+    color: #666;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.banner-img{
+    width: 100%;
+}
+
+main section article{
+    margin-bottom: 10px;
+    background-color: #FFF;
+}
+
+main section article img{
+    width: 100%;
+}
+
+.info-article{
+    border-top: 1px solid #ebebeb;
+    padding: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.info{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.precios{
+    padding-right: 5rem;
+    font-size: 18px;
+}
+
+.descuentos{
+    font-size: 16px;
+    color: #39b54a;
+}
+
+.descripcion{
+    font-size: 16px;
+}
+
+main section article div i{
+    display: block;
+    font-size: 16px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #39b54a;
+    color: #39b54a;
+    background-color: #FFF;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: -15px;
+}
+
+.descripcion{
+    display: none;
+}
+
+/* FOOTER */
+footer{
+    text-align: center;
+    margin: 0 auto;
+    width: 98%;
+    background-color: #FFF;
+}
+
+footer section{
+    padding: 40px;
+}
+
+footer i{
+    color: #1259c3;
+    font-size: 40px;
+}
+
+footer p{
+    color: #666;
+}
+
+/* LOGIN / REGISTRO */
+.registro-login-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registro-login-box div{
+    padding: 2rem;
+    width: 500px;
+}
+
+.registro-login-box div input,
+.registro-login-box div select{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#nombre,
+#usuario,
+#email,
+#fecha,
+#opciones,
+#password,
+#password-confirm{
+    padding: 10px;
+    width: 100%;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    color: #666;
+}
+
+main form .titulo-form{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+main form .boton{
+    padding: 10px;
+    background-color: #1259c3;
+    color: #FFF;
+    border: none;
+    width: 100%;
+    outline: none;
+    border-radius: 7px;
+    transition: 0.2s;
+}
+
+main form .boton:hover{
+    cursor: pointer;
+    background-color: #0022AA;
+    transition: 0.2s;
+}
+
+main form .boton:active{
+    box-shadow : 0px 0px 10px #000000 inset;
+    transition: 0.2s;
+}
+
+main .back{
+    padding: 5px 9px 3px 7px;
+    color: #666;
+    outline: none;
+    background-color: #FFF;
+    border-radius: 7px;
+    transition: 0.2s;
+}
+
+main .back:hover{
+    cursor: pointer;
+    background-color: #cacaca;
+    transition: 0.2s;
+}
+
+main .back:active{
+    box-shadow : 0px 0px 10px rgb(131, 131, 131) inset;
+    transition: 0.2s;
+}
+
+/* RESPONSIVE */
+
+/* TABLET */
+@media (min-width: 361px){
+    .productos{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .descripcion{
+        display: none;
+        transition: 0.2s;
+    }
+
+    main section article{
+        transition: .2s all;
+    }
+
+    main section article:hover{
+        box-shadow : 0px 0px 10px rgb( 100 , 100 , 100 );
+        transition: .2s all;
+    }
+
+    main section article:hover .descripcion{
+        display: block;
+        transition: 0.2s;
+    }
+
+    main section article i{
+        transition: transform 0.3s;
+    }
+
+    main section article:hover i{
+        transform: rotate(-90deg);
+    }
+
+    main section article{
+        width: 45%;
+    }
+
+    header nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    header nav ul{
+        display: flex;
+        margin-bottom: 0;
+        justify-content: space-around;
+        width: 42%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    header div.burger-menu{
+        display: none;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 769px){
+    main section article{
+        width: 22.5%;
+    }
+
+    .top-header{
+        padding: 1%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo{
+        width: 200px;
+    }
+
+    footer div{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    header .buscador form{
+        width: 50%;
+    }
+
+}
