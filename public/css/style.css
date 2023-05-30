@@ -349,7 +349,7 @@ main .back:active{
 }
 
 /* DESKTOP */
-@media (min-width: 769px){
+@media (min-width: 887px){
     main section article{
         width: 22.5%;
     }
