@@ -20,5 +20,19 @@
     "intereses": "moda",
     "contraseña": "$2b$10$3mTH/3L.cJjVZbvB/FmsLe2RjRuJTUjN6b4jWOUd6AbAJ.Bkuadqu",
     "imagenUser": "user-1689456842525.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Alejo Pequeño",
+    "usuario": "alepeque9",
+    "email": "alejopequeno25@gmail.com",
+    "fecha": "2023-07-04",
+    "opciones": "Vendedor",
+    "intereses": [
+      "electro",
+      "moda"
+    ],
+    "contraseña": "$2b$10$7pSFiS4dN01w4YsSVOuDjuAJTtYuZgVmMGkWYxY7QehwkTE6n8rPe",
+    "imagenUser": "user-1689459294971.jpg"
   }
 ]

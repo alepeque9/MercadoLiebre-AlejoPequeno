@@ -18,5 +18,15 @@
     "descripcionGeneral": "fdafds",
     "oferta": "si",
     "imagenProducto": "product-1689458456412.jpg"
+  },
+  {
+    "id": 3,
+    "vendedor": "1",
+    "nombreProd": "fsdfsdf",
+    "precio": 342131,
+    "categoriaProducto": "Hogar",
+    "descripcionGeneral": "fsdfsdfsd",
+    "oferta": "si",
+    "imagenProducto": "product-1689459352571.jpg"
   }
 ]
