@@ -1,0 +1,91 @@
+<%- include('../partials/head', {tituloWeb: 'MercadoLiebre - Register' }) %>
+
+<body>
+    <!-- HEADER -->
+    <%- include("../partials/header")%>
+    <!-- FIN HEADER -->
+    <main class="registro-login-box">
+        <div>
+            <h2>Registro</h2>
+            <form method="post" action="/registro" enctype="multipart/form-data">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido"><br>
+                <% if (locals.errors && errors.nombre) { %>
+                    <p class="errors"><%= errors.nombre.msg %></p>
+                <% } %>
+
+                <input type="text" id="usuario" name="usuario" placeholder="Usuario"><br>
+                <% if (locals.errors && errors.usuario) { %>
+                    <p class="errors"><%= errors.usuario.msg %></p>
+                <% } %>
+
+                <input type="email" id="email" name="email" placeholder="E-mail"><br>
+                <% if (locals.errors && errors.email) { %>
+                    <p class="errors"><%= errors.email.msg %></p><br>
+                <% } %>
+
+                <label for="fecha" class="titulo-form">Fecha de nacimiento</label><br>
+                <input type="date" id="fecha" name="fecha" placeholder="Fecha de nacimeinto"><br>
+                <% if (locals.errors && errors.fecha) { %>
+                    <p class="errors"><%= errors.fecha.msg %></p><br>
+                <% } %>
+
+                <label for="opciones" class="titulo-form">Perfil del usuario</label><br>
+                <select name="opciones" id="opciones">
+                    <option value="comprador">Comprador</option>
+                    <option value="Vendedor">Vendedor</option>
+                </select><br>
+                <% if (locals.errors && errors.opciones) { %>
+                    <p class="errors"><%= errors.opciones.msg %></p><br>
+                <% } %>
+
+                <label for="imagenUser" class="titulo-form">Foto de usuario</label><br>
+                <input name="imagenUser" type="file"><br>
+
+                <label for="intereses" class="titulo-form">Intereses</label><br>
+                <label>
+                    <input type="checkbox" name="intereses" value="electro"> Electro
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="intereses" value="moda"> Moda
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="intereses" value="hogar"> Hogar
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="intereses" value="jugueteria"> Jugueteria
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="intereses" value="vida-sana"> Vida sana
+                </label>
+                <br>
+                <% if (locals.errors && errors.intereses) { %>
+                    <p class="errors"><%= errors.intereses.msg %></p>
+                <% } %>
+
+                <input type="password" id="password" name="password" placeholder="Contraseña"><br>
+                <% if (locals.errors && errors.password) { %>
+                    <p class="errors"><%= errors.password.msg %></p>
+                <% } %>
+
+                <input type="password" id="password-confirm" name="passwordConfirm" placeholder="Confirmar contraseña"><br>
+                <% if (locals.errors && errors.passwordConfirm) { %>
+                    <p class="errors"><%= errors.passwordConfirm.msg %></p>
+                <% } %>
+
+                <input type="submit" value="Registrar" class="boton">
+            </form>
+            <a class="back" href="/">
+                <i class="fa-solid fa-backward"></i>
+            </a>
+        </div>
+    </main>
+    <!-- FOOTER -->
+    <%- include("../partials/footer")%>
+    <!-- FIN FOOTER -->
+</body>
+
+</html>

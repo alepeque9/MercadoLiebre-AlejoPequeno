@@ -38,9 +38,11 @@ p{
     justify-content: center;
     padding: 5%;
 }
-
-.logo{
+.enlace-logo{
     width: 50%;
+}
+.logo{
+    width: 100%;
     padding: 10px;
 }
 
@@ -284,6 +286,34 @@ main .back:active{
     transition: 0.2s;
 }
 
+/* REGISTER ERRORS */
+.errors{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(255, 1, 1);
+}
+
+/* 404 */
+.error-404 {
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-404 div{
+    text-align: center;
+}
+
+.error-404 h3{
+    font-size: 40px;
+}
+
+.error-404 h4{
+    font-size: 30px;
+}
+
+
 /* RESPONSIVE */
 
 /* TABLET */
@@ -295,7 +325,7 @@ main .back:active{
     }
 
     .descripcion{
-        display: none;
+        color: transparent;
         transition: 0.2s;
     }
 
@@ -309,7 +339,7 @@ main .back:active{
     }
 
     main section article:hover .descripcion{
-        display: block;
+        color: #000;
         transition: 0.2s;
     }
 
@@ -359,6 +389,9 @@ main .back:active{
         justify-content: space-between;
         align-items: center;
     }
+    .enlace-logo{
+        width: 200px;
+    }
     .logo{
         width: 200px;
     }
@@ -370,6 +403,10 @@ main .back:active{
     }
     header .buscador form{
         width: 50%;
+    }
+
+    .descripcion{
+        display: block;
     }
 
 }

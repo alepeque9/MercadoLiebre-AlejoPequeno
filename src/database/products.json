@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "vendedor": "1",
+    "nombreProd": "Cafetera Moulinex",
+    "precio": 6770,
+    "oferta": "Si",
+    "categoria": "Electro",
+    "descGeneral": "Cafetera Nescafe roja",
+    "image": "product-1687978321828.jpeg"
+  },
+  {
+    "id": 2,
+    "vendedor": "1",
+    "nombreProd": "Alejoi",
+    "precio": 432,
+    "categoriaProducto": "Electro",
+    "descripcionGeneral": "fdafds",
+    "oferta": "si",
+    "imagenProducto": "product-1689458456412.jpg"
+  }
+]

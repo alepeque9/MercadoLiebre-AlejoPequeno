@@ -1,0 +1,67 @@
+<%- include('../partials/head', {tituloWeb: 'MercadoLiebre - Register' }) %>
+
+<body>
+    <!-- HEADER -->
+    <%- include("../partials/header")%>
+    <!-- FIN HEADER -->
+    <main class="registro-login-box">
+        <div>
+            <h2>Publicar producto</h2>
+            <form method="post" action="/1/vender" enctype="multipart/form-data">
+                <input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto"><br>
+                <% if (locals.errors && errors.nombreProducto) { %>
+                    <p class="errors"><%= errors.nombreProducto.msg %></p>
+                <% } %>
+
+                <input type="number" id="precioProducto" name="precioProducto" placeholder="Precio"><br>
+                <% if (locals.errors && errors.precioProducto) { %>
+                    <p class="errors"><%= errors.precioProducto.msg %></p><br>
+                <% } %>
+
+                <label for="categoriaProducto" class="titulo-form">Perfil del usuario</label><br>
+                <select name="categoriaProducto" id="categoriaProducto">
+                    <option value="Electro">Electro</option>
+                    <option value="Moda">Moda</option>
+                    <option value="Hogar">Hogar</option>
+                    <option value="Jugueteria">Jugueteria</option>
+                    <option value="Moda">Vida sana</option>
+                    <option value="Moda">Otro</option>
+                </select><br>
+                <% if (locals.errors && errors.categoriaProducto) { %>
+                    <p class="errors"><%= errors.categoriaProducto.msg %></p><br>
+                <% } %>
+
+                <label for="descripcionGeneral" class="titulo-form">Descripción</label><br>
+                <input type="text" id="descripcionGeneral" name="descripcionGeneral" placeholder="Descripción del producto"><br>
+                <% if (locals.errors && errors.descripcionGeneral) { %>
+                    <p class="errors"><%= errors.descripcionGeneral.msg %></p><br>
+                <% } %>
+
+                <label for="imagenProducto" class="titulo-form">Imagen del producto</label><br>
+                <input name="imagenProducto" type="file"><br>
+                <% if (locals.errors && errors.imagenProducto) { %>
+                    <p class="errors"><%= errors.imagenProducto.msg %></p><br>
+                <% } %>
+
+                <label for="oferta" class="titulo-form">Perfil del usuario</label><br>
+                <select name="oferta" id="oferta">
+                    <option value="si">Si</option>
+                    <option value="no">No</option>
+                </select><br>
+                <% if (locals.errors && errors.oferta) { %>
+                    <p class="errors"><%= errors.oferta.msg %></p><br>
+                <% } %>
+
+                <input type="submit" value="Publicar" class="boton">
+            </form>
+            <a class="back" href="/">
+                <i class="fa-solid fa-backward"></i>
+            </a>
+        </div>
+    </main>
+    <!-- FOOTER -->
+    <%- include("../partials/footer")%>
+    <!-- FIN FOOTER -->
+</body>
+
+</html>
