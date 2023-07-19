@@ -26,7 +26,7 @@ header{
 }
 
 p{
-    font-size: 12px;
+    font-size: 15px;
 }
 
 /* HEADER */
@@ -57,11 +57,30 @@ p{
 header nav ul li a{
     font-size: 15px;
     text-decoration: none;
+    color: rgba(0, 0, 0, 0.685);
+    font-weight: bold;
+    transition: 0.2s;
+    margin-right: 5px;
+}
+
+header nav ul li a~i{
+    color: rgba(0, 0, 0, 0.685);
+    transition: 0.2s;
+}
+
+header nav ul li a:hover{
+    color: #000;
+}
+
+header nav ul li a:hover~i{
     color: #000;
 }
 
 header nav ul li{
+    margin-top: 5px;
     list-style-type: none;
+    display: flex;
+    align-items: center;
 }
 
 header nav{
@@ -112,6 +131,20 @@ header div.burger-menu{
     text-align: center;
 }
 
+header nav .profile-img img{
+    border-radius: 50%;
+    width: 35px;
+}
+
+header nav .profile-img a{
+    display: flex;
+    align-items: center;
+}
+
+header nav .profile-img a p{
+    font-size: 15px;
+    margin-left: 5px;
+}
 /* MAIN */
 
 main{
@@ -132,7 +165,13 @@ main section h3{
 
 main section article{
     margin-bottom: 10px;
+    border-radius: 5px;
     background-color: #FFF;
+    overflow: hidden;
+}
+
+main section article a{
+    text-decoration: none;
 }
 
 main section article img{
@@ -155,6 +194,7 @@ main section article img{
 .precios{
     padding-right: 5rem;
     font-size: 18px;
+    color: #000;
 }
 
 .descuentos{
@@ -211,6 +251,7 @@ footer p{
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 55vh;
 }
 
 .registro-login-box div{
@@ -311,9 +352,174 @@ main .back:active{
 
 .error-404 h4{
     font-size: 30px;
+    margin-bottom: 20px;
 }
 
+.error-404 a{
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #1259c3;
+    transition: 0.2s ease-in-out;
+    text-decoration: none;
+    color: #FFF;
+}
 
+.error-404 a:hover{
+    background-color: #0022AA;
+}
+
+.error-404 a:active{
+    background-color: #0a1644;
+}
+
+/************************************** SEARCH ************************************/
+
+.main-search {
+    min-height: 70vh;
+}
+
+.main-search hr{
+    margin: auto;
+    width: 95%;
+    color: #1a1a1a;
+}
+
+.main-search article {
+    margin: auto;
+    width: 95%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: flex;
+}
+
+.main-search h3,
+.main-search2 h3 {
+    font-size: 17px;
+}
+
+.main-search h4 {
+    font-size: 15px;
+}
+
+.main-search h5 {
+    font-size: 14px;
+}
+
+.imagen-detalle-prod {
+    width: 200px;
+    width: 50%;
+    height: 200px;
+    border: 1px solid #1a1a1a80;
+    box-shadow: 0px 0px 5px #1a1a1a80;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.green {
+    color: green;
+}
+
+.main-search img {
+    width: 100%;
+    max-height: 100%;
+}
+
+.descripcion_search_prod {
+    margin-left: 1rem;
+    width: 50%;
+}
+
+.descripcion_search_prod a {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    margin-top: 10px;
+    color: #1c232a;
+    width: 100px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background-color: #1259c3;
+    color: #FFF;
+}
+
+.descripcion_search_prod a:hover {
+    background-color: #0022AA;
+}
+
+.descripcion_search_prod a:active {
+    box-shadow: 0px 0px 10px #0a1644 inset;
+}
+
+.notfound-search{
+    text-align: center;
+}
+
+/* PROFILE */
+.profile{
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile div{
+    text-align: center;
+}
+
+.profile div h3{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.profile div .info-profile{
+    margin-top: 10px;
+    background-color: #8d8d8d;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(138, 138, 138);
+    margin-bottom: 10px;
+}
+
+.profile div .info-profile span{
+    font-weight: bold;
+}
+
+.profile div .info-profile p{
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.profile div .img-profile{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px rgb(138, 138, 138);
+}
+
+.profile a{
+    padding: 5px 10px 5px 10px;
+    color: #FFF;
+    background-color: #1259c3;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+.profile a:hover{
+    background-color: #0022AA;
+    box-shadow: 0px 0px 10px rgb(138, 138, 138);
+}
+
+.profile a:active{
+    background-color: #0a1644;
+}
 /* RESPONSIVE */
 
 /* TABLET */
@@ -355,13 +561,6 @@ main .back:active{
         width: 45%;
     }
 
-    header nav{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
 
     header nav ul{
         display: flex;
@@ -373,15 +572,38 @@ main .back:active{
         padding: 10px;
     }
 
-    header div.burger-menu{
-        display: none;
+    .imagen-detalle-prod {
+        width: 50%;
     }
+
+    .descripcion_search_prod{
+        width: 70%;
+    }
+
+    .profile div .img-profile{
+        width: 250px;
+        height: 250px;
+    }
+
 }
 
 /* DESKTOP */
-@media (min-width: 887px){
+@media (min-width: 1007px){
     main section article{
         width: 22.5%;
+    }
+
+    header div.burger-menu{
+        display: none;
+    }
+
+    header nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 60px;
     }
 
     .top-header{
@@ -407,6 +629,21 @@ main .back:active{
 
     .descripcion{
         display: block;
+    }
+
+    .imagen-detalle-prod {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #1a1a1a80;
+        box-shadow: 0px 0px 5px #1a1a1a80;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .profile div .img-profile{
+        width: 300px;
+        height: 300px;
     }
 
 }

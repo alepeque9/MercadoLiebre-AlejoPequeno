@@ -31,5 +31,18 @@ module.exports = {
             fs.writeFileSync(rutaProducto, JSON.stringify(datos, null, 2), "utf-8");
             res.render('./product/createProduct')
         }
+    },
+    search: (req, res) => {
+        let search = datos.filter((row) => {
+            const nombre = (row.nombreProd || '').toString().toLowerCase();
+            const categoria = (row.categoriaProducto || '').toString().toLowerCase();
+            const desc = (row.descripcionGeneral || '').toString().toLowerCase();
+
+            const query = (req.query.search || '').toString().toLowerCase();
+
+            return nombre.includes(query) || categoria.includes(query) || desc.includes(query);
+        });
+
+        return res.render('./product/search', { search: search });
     }
 };

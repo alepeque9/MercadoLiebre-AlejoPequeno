@@ -4,7 +4,7 @@
             <img class="logo" src="/images/design/logo-mercado-liebre.svg" alt="Mercado-Liebre">
         </a>
         <div class="buscador">
-            <form action="buscador">
+            <form action="search">
                 <input type="text" class="input" name="search" placeholder="Buscar productos, marcas">
                 <i class="fa fa-search lupa"></i>
             </form>
@@ -21,18 +21,27 @@
             <li><a href="">Ayuda</a></li>
         </ul>
         <ul>
-            <li>
-                <a href="/registro">Creá tu cuenta</a>
-                <i class="fa-solid fa-user"></i>
-            </li>
-            <li>
-                <a href="/login">Ingresá</a>
-                <i class="fa-solid fa-right-to-bracket"></i>
-            </li>
-            <li>
-                <a href="">Mis compras</a>
-                <i class="fa-solid fa-cart-shopping"></i>
-            </li>
+            <% if (locals.isLogged) { %>
+                <li>
+                    <a href="">Mis compras</a>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </li>
+                <li class="profile-img">
+                    <a href="/profile">
+                        <img src="/images/users/<%= locals.userLogged.avatar %>" alt="">
+                        <p>Hola, @<%= locals.userLogged.usuario %></p>
+                    </a>
+                </li>
+            <% } else { %>
+                <li>
+                    <a href="/registro">Creá tu cuenta</a>
+                    <i class="fa-solid fa-user"></i>
+                </li>
+                <li>
+                    <a href="/login">Ingresá</a>
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                </li>
+            <% } %>
         </ul>
     </nav>
     <div class="burger-menu">

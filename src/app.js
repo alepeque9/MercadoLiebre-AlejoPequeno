@@ -1,10 +1,10 @@
 //call modules
-//call modules
 const express = require('express');
-const path = require('path');
-const app = express();
 const methodOverride = require('method-override');
 const session = require ('express-session');
+const cookies = require('cookie-parser');
+const path = require('path');
+const app = express();
 
 //call routes
 const mainRoute = require("./routes/mainRoute");
@@ -22,10 +22,17 @@ app.use(express.urlencoded({ extended: false}));
 
 //session
 app.use (session ({
-    secret: "mensaje secreto",
+    secret: "Shhhhh, es un secreto",
     resave : false,
     saveUninitialized:false,
 }));
+
+//cookies
+app.use(cookies());
+
+//user logged
+const userLoggedMiddleware = require('./middleware/userLoggedMiddleware')
+app.use(userLoggedMiddleware);
 
 //template engines
 app.set('views', path.join(__dirname, '../views'));
@@ -49,5 +56,5 @@ app.use(productRoute);
 
 //404
 app.use((req, res, next) => {
-    res.status(404).render('./404/404');
+    res.status(404).render('./error/404');
 });

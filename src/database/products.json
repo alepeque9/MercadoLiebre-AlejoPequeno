@@ -4,29 +4,39 @@
     "vendedor": "1",
     "nombreProd": "Cafetera Moulinex",
     "precio": 6770,
-    "oferta": "Si",
-    "categoria": "Electro",
-    "descGeneral": "Cafetera Nescafe roja",
-    "image": "product-1687978321828.jpeg"
+    "categoriaProducto": "Electro",
+    "descripcionGeneral": "Cafetera Moulinex - roja",
+    "oferta": "si",
+    "imagenProducto": "product-1689527887729.jpg"
   },
   {
     "id": 2,
     "vendedor": "1",
-    "nombreProd": "Alejoi",
-    "precio": 432,
+    "nombreProd": "MacBook Pro 2019",
+    "precio": 230000,
     "categoriaProducto": "Electro",
-    "descripcionGeneral": "fdafds",
+    "descripcionGeneral": "MacBook Pro 2019 - Silver",
     "oferta": "si",
-    "imagenProducto": "product-1689458456412.jpg"
+    "imagenProducto": "product-1689527976763.jpg"
   },
   {
     "id": 3,
     "vendedor": "1",
-    "nombreProd": "fsdfsdf",
-    "precio": 342131,
-    "categoriaProducto": "Hogar",
-    "descripcionGeneral": "fsdfsdfsd",
+    "nombreProd": "Samsung Galaxy S10",
+    "precio": 70500,
+    "categoriaProducto": "Electro",
+    "descripcionGeneral": "Samsung Galaxy S10 - telefono",
     "oferta": "si",
-    "imagenProducto": "product-1689459352571.jpg"
+    "imagenProducto": "product-1689528058671.jpg"
+  },
+  {
+    "id": 4,
+    "vendedor": "1",
+    "nombreProd": "SmartTv Samsung 43\"",
+    "precio": 23200,
+    "categoriaProducto": "Electro",
+    "descripcionGeneral": "SmartTv Samsung 43\"",
+    "oferta": "si",
+    "imagenProducto": "product-1689528080823.jpg"
   }
 ]

@@ -1,38 +1,17 @@
 [
-  {
-    "id": 1,
-    "nombre": "Alejo Pequeño",
-    "usuario": "alepeque9",
-    "email": "alejopequeno25@gmail.com",
-    "fecha": "2000-10-25",
-    "opciones": "comprador",
-    "intereses": "electro",
-    "contraseña": "$2b$10$lQ7kQspclHRm/UwEB5C7p.5ebKOJrT5ftvwOKsEpHld0AOyFvmXM.",
-    "imagenUser": "user_undefined.png"
-  },
-  {
-    "id": 2,
-    "nombre": "adsdad",
-    "usuario": "alepeque9",
-    "email": "alejopequeno25@gmail.com",
-    "fecha": "2023-07-03",
-    "opciones": "Vendedor",
-    "intereses": "moda",
-    "contraseña": "$2b$10$3mTH/3L.cJjVZbvB/FmsLe2RjRuJTUjN6b4jWOUd6AbAJ.Bkuadqu",
-    "imagenUser": "user-1689456842525.png"
-  },
-  {
-    "id": 3,
-    "nombre": "Alejo Pequeño",
-    "usuario": "alepeque9",
-    "email": "alejopequeno25@gmail.com",
-    "fecha": "2023-07-04",
-    "opciones": "Vendedor",
-    "intereses": [
-      "electro",
-      "moda"
-    ],
-    "contraseña": "$2b$10$7pSFiS4dN01w4YsSVOuDjuAJTtYuZgVmMGkWYxY7QehwkTE6n8rPe",
-    "imagenUser": "user-1689459294971.jpg"
-  }
+ {
+  "id": 1,
+  "nombre": "Alejo Pequeño",
+  "usuario": "alepeque9",
+  "email": "alejopequeno25@gmail.com",
+  "fecha": "2000-10-25",
+  "opciones": "comprador",
+  "intereses": [
+   "moda",
+   "hogar"
+  ],
+  "password": "$2a$10$oc/rnipv8ARjmpzPnDdHDursS.IikT1nqhDIe2m0gbUNKu5U3J782",
+  "passwordConfirm": "$2a$10$EH4On73GC/MNXjiMi0MuI.IoHlTcnba8XGFlXyqnywqW5P2V3QQI.",
+  "avatar": "user-1689734757155.png"
+ }
 ]

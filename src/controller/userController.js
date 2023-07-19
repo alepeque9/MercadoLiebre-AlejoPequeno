@@ -1,42 +1,86 @@
-const fs = require('fs');
-const path = require('path');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
-
-const rutaregistro = path.resolve(__dirname, '../database/users.json');
-const datos = JSON.parse(fs.readFileSync(rutaregistro));
+const User = require('../models/User')
 
 module.exports = {
-    login: (req, res) => {
-        return res.render('user/login');
-    },
-
-    registro: (req, res) => {
+    register: (req, res) => {
         return res.render('./user/register');
     },
 
-    create: (req, res) => {
+    processRegister: (req, res) => {
         const resultValidation = validationResult(req);
         if (resultValidation.errors.length > 0) {
             return res.render('./user/register', {
                 errors: resultValidation.mapped()
             });
-        } else {
-            let registroNuevo = {
-                "id": datos.length + 1,
-                "nombre": req.body.nombre,
-                "usuario": req.body.usuario,
-                "email": req.body.email,
-                "fecha": req.body.fecha,
-                "opciones": req.body.opciones,
-                "intereses": req.body.intereses,
-                "contraseña": bcrypt.hashSync(req.body.password, 10),
-                "terminos": req.body.terminos,
-                "imagenUser": req.file ? req.file.filename : 'user_undefined.png'
-            };
-            datos.push(registroNuevo);
-            fs.writeFileSync(rutaregistro, JSON.stringify(datos, null, 2), "utf-8");
-            res.render('./user/create');
         }
+
+        let userInDB = User.findByField('email', req.body.email);
+
+        if (userInDB){
+            return res.render('./user/register', {
+                errors: {
+                    email: {
+                        msg: 'Este email ya está registrado'
+                    }
+                }
+            });
+        }
+
+        let userToCreate = {
+            ...req.body,
+            password: bcryptjs.hashSync(req.body.password, 10),
+            passwordConfirm: bcryptjs.hashSync(req.body.passwordConfirm, 10),
+            avatar: req.file ? req.file.filename : 'user_undefined.png'
+        }
+        User.create(userToCreate);
+        res.render('./user/create');
+    },
+
+    login: (req, res) => {
+        return res.render('user/login');
+    },
+
+    loginProcess: (req, res) => {
+        let userToLogin = User.findByField('usuario', req.body.usuario);
+        if (userToLogin) {
+            let isOkPassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
+            if (isOkPassword) {
+                delete userToLogin.password;
+                delete userToLogin.passwordConfirm;
+                req.session.userLogged = userToLogin;
+                if (req.body.remember_user) {
+                    res.cookie('userCokkie', req.body.usuario, { maxAge: (1000 * 60) * 2})
+                }
+                return res.redirect('/profile');
+            };
+            return res.render('user/login', {
+                errors: {
+                    usuario: {
+                        msg: 'Las credenciales no son validas'
+                    }
+                }
+            });
+        }
+
+        return res.render('user/login', {
+            errors: {
+                usuario: {
+                    msg: 'Usuario no registrado'
+                }
+            }
+        });
+    },
+
+    profile: (req, res) => {
+        return res.render('user/profile', {
+            user: req.session.userLogged
+        });
+    },
+
+    logout: (req, res) => {
+        res.clearCookie('userCokkie')
+        req.session.destroy();
+        return res.redirect('/');
     }
 };

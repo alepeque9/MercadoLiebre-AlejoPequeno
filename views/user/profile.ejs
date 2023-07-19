@@ -1,0 +1,24 @@
+<%- include('../partials/head', {tituloWeb: 'MercadoLiebre - Usuario' }) %>
+<body>
+    <!-- HEADER -->
+    <%- include("../partials/header")%>
+    <!-- FIN HEADER -->
+    <main class="profile">
+        <div>
+            <h3>Hola, @<%= user.usuario %></h3>
+            <div class="img-profile">
+                <img src="./images/users/<%= user.avatar %>" alt="<%= user.usuario %>">
+            </div>
+            <div class="info-profile">
+                <p><span>Email:</span> <%= user.email %></p>
+                <p><span>Fecha de nacimiento:</span> <%= user.fecha %></p>
+            </div>
+            <a href="/logout">Logout</a>
+        </div>
+    </main>
+    <!-- FOOTER -->
+    <%- include("../partials/footer")%>
+    <!-- FIN FOOTER -->
+</body>
+
+</html>
