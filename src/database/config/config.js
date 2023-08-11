@@ -1,8 +1,8 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": 4265,
-    "database": "musimundos",
+    "password": null,
+    "database": "mercadoliebre",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

@@ -29,15 +29,6 @@
                     <p class="errors"><%= errors.fecha.msg %></p><br>
                 <% } %>
 
-                <label for="opciones" class="titulo-form">Perfil del usuario</label><br>
-                <select name="opciones" id="opciones">
-                    <option value="comprador">Comprador</option>
-                    <option value="Vendedor">Vendedor</option>
-                </select><br>
-                <% if (locals.errors && errors.opciones) { %>
-                    <p class="errors"><%= errors.opciones.msg %></p><br>
-                <% } %>
-
                 <label for="imagenUser" class="titulo-form">Foto de usuario</label><br>
                 <input name="imagenUser" type="file"><br>
 

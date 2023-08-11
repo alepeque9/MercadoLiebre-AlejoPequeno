@@ -4,7 +4,7 @@
             <img class="logo" src="/images/design/logo-mercado-liebre.svg" alt="Mercado-Liebre">
         </a>
         <div class="buscador">
-            <form action="search">
+            <form action="search" method="get">
                 <input type="text" class="input" name="search" placeholder="Buscar productos, marcas">
                 <i class="fa fa-search lupa"></i>
             </form>
@@ -20,6 +20,7 @@
             <li><a href="/1/vender">Vender</a></li>
             <li><a href="">Ayuda</a></li>
         </ul>
+        <p>hola <%= locals.userLogged %></p>
         <ul>
             <% if (locals.isLogged) { %>
                 <li>
@@ -28,7 +29,9 @@
                 </li>
                 <li class="profile-img">
                     <a href="/profile">
-                        <img src="/images/users/<%= locals.userLogged.avatar %>" alt="">
+                        <div>
+                            <img src="/images/users/<%= locals.userLogged.avatar %>" alt="<%= locals.userLogged.usuario %>">
+                        </div>
                         <p>Hola, @<%= locals.userLogged.usuario %></p>
                     </a>
                 </li>

@@ -1,9 +1,6 @@
-const fs = require('fs');
-const path = require('path');
 const { validationResult } = require('express-validator');
 
-const rutaProducto = path.resolve(__dirname, '../database/products.json')
-const datos = JSON.parse(fs.readFileSync(rutaProducto));
+let db = require('../database/models')
 
 module.exports = {
     vender: (req, res) => {
@@ -16,33 +13,34 @@ module.exports = {
             return res.render('./product/vender', {
                 errors: resultValidation.mapped()
             });
-        } else{
-            let productoNuevo = {
-                "id": datos.length + 1,
-                "vendedor": req.params.id,
-                "nombreProd": req.body.nombreProducto,
-                "precio": parseFloat(req.body.precioProducto),
-                "categoriaProducto": req.body.categoriaProducto,
-                "descripcionGeneral": req.body.descripcionGeneral,
-                "oferta": req.body.oferta,
-                "imagenProducto": req.file.filename,
-            }
-            datos.push(productoNuevo);
-            fs.writeFileSync(rutaProducto, JSON.stringify(datos, null, 2), "utf-8");
-            res.render('./product/createProduct')
         }
+
+        db.Products.create({
+            vendedor: req.params.id,
+            nombre_prod: req.body.nombreProducto,
+            precio: parseFloat(req.body.precioProducto),
+            categoria: req.body.categoriaProducto,
+            descripcion: req.body.descripcionGeneral,
+            oferta: req.body.oferta,
+            imagen: req.file.filename
+        });
+        res.render('./product/createProduct');
     },
     search: (req, res) => {
-        let search = datos.filter((row) => {
-            const nombre = (row.nombreProd || '').toString().toLowerCase();
-            const categoria = (row.categoriaProducto || '').toString().toLowerCase();
-            const desc = (row.descripcionGeneral || '').toString().toLowerCase();
+        const searchQuery = req.query.search;
+        console.log(searchQuery)
 
-            const query = (req.query.search || '').toString().toLowerCase();
-
-            return nombre.includes(query) || categoria.includes(query) || desc.includes(query);
-        });
-
-        return res.render('./product/search', { search: search });
+        db.Products.findAll({
+            where: {
+                [db.Sequelize.Op.or]: [
+                    db.Sequelize.where(db.Sequelize.fn('LOWER', db.Sequelize.col('nombre_prod')), 'LIKE', `%${searchQuery.toLowerCase()}%`),
+                    db.Sequelize.where(db.Sequelize.fn('LOWER', db.Sequelize.col('categoria')), 'LIKE', `%${searchQuery.toLowerCase()}%`),
+                    db.Sequelize.where(db.Sequelize.fn('LOWER', db.Sequelize.col('descripcion')), 'LIKE', `%${searchQuery.toLowerCase()}%`)
+                ]
+            }
+        })
+            .then((products) => {
+                res.render('./product/search', { search: products });
+            })
     }
 };

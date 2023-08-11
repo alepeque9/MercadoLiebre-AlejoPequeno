@@ -1,11 +1,15 @@
-const fs = require ('fs');
-const path = require ('path');
-const datos = JSON.parse(fs.readFileSync (path.resolve(__dirname,'../database/products.json')));
+let db = require('../database/models')
 
 module.exports = {
     index: (req, res) => {
-        const oferta = datos.filter((row) => row.oferta == "si");
-        const productos = datos.slice(-4);
-        return res.render('index', {oferta: oferta, productos: productos});
+        db.Products.findAll({
+            where: {OFERTA: 1},
+            order:[
+                ["precio", "ASC"], //ORDENAR POR PRECIO DE FORMA ASCENDENTE O DESC (DESCENDIENTE)
+            ],
+            limit: 4
+        }).then((resultado) => {
+            res.render('index', {oferta: resultado, productos: resultado})
+        });
     }
 }
