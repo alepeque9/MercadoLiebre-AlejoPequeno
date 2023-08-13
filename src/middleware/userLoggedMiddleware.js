@@ -20,8 +20,7 @@ function userLoggedMiddleware(req, res, next) {
 
         return;
     }
-    // req.session.destroy();
-    delete req.session.userLogged;
+    req.session.destroy();
     next();
 }
 

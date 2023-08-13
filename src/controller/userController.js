@@ -103,7 +103,6 @@ module.exports = {
     },
 
     profile: (req, res) => {
-        console.log(req.session.userLogged.id);
         db.Users.findByPk(req.session.userLogged.id)
             .then(function (user) {
                 res.render('user/profile', { user: user })
