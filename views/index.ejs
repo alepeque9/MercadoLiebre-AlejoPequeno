@@ -14,14 +14,14 @@
                 <% productos.forEach ((row)=> { %>
                     <article>
                         <a href="">
-                            <img src="/images/products/<%= row.imagen %>" alt="<%= row.nombre %>" class="img-prod">
+                            <img src="/images/products/<%= row.imagenProducto %>" alt="<%= row.nombreProd %>" class="img-prod">
                             <div class="info-article">
                                 <i class="fa-solid fa-truck"></i>
                                 <div class="info">
-                                    <p class="precios">$<%= row.precio.toLocaleString(); %></p>
+                                    <p class="precios">$<%= row.precio %></p>
                                     <p class="descuentos">40% OFF</p>
                                 </div>
-                                <h4 class="descripcion"><%= row.descripcion %></h4>
+                                <h4 class="descripcion"><%= row.nombreProd %></h4>
                             </div>
                         </a>
                     </article>
@@ -34,14 +34,14 @@
                 <% oferta.forEach ((row)=> { %>
                     <article>
                         <a href="">
-                            <img src="/images/products/<%= row.imagen %>" alt="<%= row.nombre %>" class="img-prod">
+                            <img src="/images/products/<%= row.imagenProducto %>" alt="<%= row.nombreProd %>" class="img-prod">
                             <div class="info-article">
                                 <i class="fa-solid fa-truck"></i>
                                 <div class="info">
-                                    <p class="precios">$<%= row.precio.toLocaleString(); %></p>
+                                    <p class="precios">$<%= row.precio %></p>
                                     <p class="descuentos">40% OFF</p>
                                 </div>
-                                <h4 class="descripcion"><%= row.descripcion %></h4>
+                                <h4 class="descripcion"><%= row.nombreProd %></h4>
                             </div>
                         </a>
                     </article>

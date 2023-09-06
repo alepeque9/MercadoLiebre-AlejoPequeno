@@ -1,7 +1,6 @@
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
-
-let db = require('../database/models')
+const User = require('../models/User')
 
 module.exports = {
     register: (req, res) => {
@@ -16,59 +15,26 @@ module.exports = {
             });
         }
 
-        db.Users.findOne({
-            where: {
-                EMAIL: req.body.email
-            }
-        }).then((emailResult) => {
-            if (emailResult) {
-                return res.render('./user/register', {
-                    errors: {
-                        email: {
-                            msg: 'Este email ya está registrado'
-                        }
+        let userInDB = User.findByField('email', req.body.email);
+
+        if (userInDB){
+            return res.render('./user/register', {
+                errors: {
+                    email: {
+                        msg: 'Este email ya está registrado'
                     }
-                });
-            } else {
-                db.Users.findOne({
-                    where: {
-                        usuario: req.body.usuario
-                    }
-                }).then((userResult) => {
-                    if (userResult) {
-                        return res.render('./user/register', {
-                            errors: {
-                                usuario: {
-                                    msg: 'Este usuario ya existe'
-                                }
-                            }
-                        });
-                    } else {
-                        if (req.body.password !== req.body.passwordConfirm) {
-                            return res.render('./user/register', {
-                                errors: {
-                                    passwordConfirm: {
-                                        msg: 'Ambas contraseñas deben coincidir'
-                                    }
-                                }
-                            });
-                        } else {
-                            db.Users.create({
-                                nombre: req.body.nombre,
-                                usuario: req.body.usuario,
-                                email: req.body.email,
-                                nacimiento: req.body.fecha,
-                                intereses: req.body.intereses,
-                                password: bcryptjs.hashSync(req.body.password, 10),
-                                avatar: req.file ? req.file.filename : 'user_undefined.png'
-                            }).then(() => {
-                                res.render('./user/create');
-                            });
-                        }
-                    }
-                });
-            }
-        });
+                }
+            });
+        }
+
+        let userToCreate = {
+            ...req.body,
+            password: bcryptjs.hashSync(req.body.password, 10),
+            passwordConfirm: bcryptjs.hashSync(req.body.passwordConfirm, 10),
+            avatar: req.file ? req.file.filename : 'user_undefined.png'
+        }
+        User.create(userToCreate);
+        res.render('./user/create');
     },
 
     login: (req, res) => {
@@ -76,42 +42,45 @@ module.exports = {
     },
 
     loginProcess: (req, res) => {
-        db.Users.findOne({
-            where: {
-                usuario: req.body.usuario
-            }
-        }).then((userToLogin) => {
-            if (userToLogin) {
-                const isOkPassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
-                if (isOkPassword) {
-                    delete userToLogin.password;
-                    req.session.userLogged = userToLogin;
-                    if (req.body.remember_user) {
-                        res.cookie('userCookie', req.body.usuario, { maxAge: (1000 * 60) * 1 });
-                    }
-                    return res.redirect('/profile');
+        let userToLogin = User.findByField('usuario', req.body.usuario);
+        if (userToLogin) {
+            let isOkPassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
+            if (isOkPassword) {
+                delete userToLogin.password;
+                delete userToLogin.passwordConfirm;
+                req.session.userLogged = userToLogin;
+                if (req.body.remember_user) {
+                    res.cookie('userCokkie', req.body.usuario, { maxAge: (1000 * 60) * 2})
                 }
-            }
+                return res.redirect('/profile');
+            };
             return res.render('user/login', {
                 errors: {
                     usuario: {
-                        msg: 'Las credenciales no son válidas'
+                        msg: 'Las credenciales no son validas'
                     }
                 }
             });
+        }
+
+        return res.render('user/login', {
+            errors: {
+                usuario: {
+                    msg: 'Usuario no registrado'
+                }
+            }
         });
     },
 
     profile: (req, res) => {
-        db.Users.findByPk(req.session.userLogged.id)
-            .then(function (user) {
-                res.render('user/profile', { user: user })
-            })
+        return res.render('user/profile', {
+            user: req.session.userLogged
+        });
     },
 
     logout: (req, res) => {
-        res.clearCookie('userCookie');
+        res.clearCookie('userCokkie')
         req.session.destroy();
         return res.redirect('/');
     }
-}
+};

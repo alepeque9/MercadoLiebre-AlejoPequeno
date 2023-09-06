@@ -4,7 +4,7 @@
             <img class="logo" src="/images/design/logo-mercado-liebre.svg" alt="Mercado-Liebre">
         </a>
         <div class="buscador">
-            <form action="search" method="get">
+            <form action="search">
                 <input type="text" class="input" name="search" placeholder="Buscar productos, marcas">
                 <i class="fa fa-search lupa"></i>
             </form>
@@ -28,9 +28,7 @@
                 </li>
                 <li class="profile-img">
                     <a href="/profile">
-                        <div>
-                            <img src="/images/users/<%= locals.userLogged.avatar %>" alt="<%= locals.userLogged.usuario %>">
-                        </div>
+                        <img src="/images/users/<%= locals.userLogged.avatar %>" alt="">
                         <p>Hola, @<%= locals.userLogged.usuario %></p>
                     </a>
                 </li>

@@ -1,27 +1,21 @@
-let db = require('../database/models');
+const User = require('../models/User')
 
-function userLoggedMiddleware(req, res, next) {
+function userLoggedMiddleware (req, res, next) {
     res.locals.isLogged = false;
-    let userInCookie = req.cookies.userCookie;
 
-    if (userInCookie) {
-        db.Users.findOne({
-            where: {
-                usuario: userInCookie
-            }
-        }).then((userFromCookie) => {
-            if (userFromCookie) {
-                req.session.userLogged = userFromCookie;
-                res.locals.isLogged = true;
-                res.locals.userLogged = req.session.userLogged;
-            }
-            next();
-        });
+    let userInCookie = req.cookies.userCokkie;
+    let userFromCookie = User.findByField('usuario', userInCookie);
 
-        return;
-    }
-    req.session.destroy();
-    next();
+    if (userFromCookie) {
+        req.session.userLogged = userFromCookie;
+    };
+
+    if (req.session.userLogged) {
+        res.locals.isLogged = true;
+        res.locals.userLogged = req.session.userLogged;
+    };
+
+    next()
 }
 
 module.exports = userLoggedMiddleware;
